@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Web</th>
+            <th>Contador</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in lista %}
+        <tr>
+            <td>{{ item.web }}</td>
+            <td>{{ app.session.get(item.web) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Búsqueda en google!{% endblock %}
+
+{% block body %}
+    <div class="row no-margin">
+        <div class="col-md-2">
+            <form class="margin-50" id="form_google" action="{{ path('scrap_buscar') }}" method="post">
+                <label for="string">Introducir busqueda</label>
+                <input class="form-control" type="text" id="string" name="string">
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div id="contenido"></div>
+    <style>
+        .no-margin {
+            margin: 0;
+        }
+        .margin-50 {
+            margin: 50px;
+        }
+    </style>
+{% endblock %}
