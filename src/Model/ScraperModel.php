@@ -42,15 +42,13 @@ class ScraperModel
             } else {
                 $web = $temp[0];
             }
-            if ('google' !== $web) {
-                if (array_key_exists($web, $urlsFinal)) {
-                    $urlsFinal[$web]['count']++;
-                } else {
-                    $urlsFinal[$web] = [
-                        'web' => $web,
-                        'count' => 1,
-                    ];
-                }
+            if (array_key_exists($web, $urlsFinal)) {
+                $urlsFinal[$web]['count']++;
+            } else {
+                $urlsFinal[$web] = [
+                    'web' => $web,
+                    'count' => 1,
+                ];
             }
         }
         uasort($urlsFinal, function ($a, $b) {
@@ -63,6 +61,11 @@ class ScraperModel
         return $urlsFinal;
     }
 
+
+    /**
+     * @param array            $links
+     * @param SessionInterface $session
+     */
     public function guardaRegistros(array $links, SessionInterface $session)
     {
         foreach ($links as $link) {

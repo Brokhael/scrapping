@@ -1,16 +1,72 @@
-<table>
-    <thead>
+<fieldset>
+    <legend>Texto buscado: <b>{{ string }}</b></legend>
+
+    <table id="result" class="table-result">
+        <thead>
         <tr>
             <th>Web</th>
-            <th>Contador</th>
+            <th>Contador búsqueda</th>
+            <th>Contador total</th>
         </tr>
-    </thead>
-    <tbody>
-    {% for item in lista %}
-        <tr>
-            <td>{{ item.web }}</td>
-            <td>{{ app.session.get(item.web) }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for item in lista %}
+            <tr>
+                <td>{{ item.web }}</td>
+                <td>{{ item.count }}</td>
+                <td>{{ app.session.get(item.web) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</fieldset>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap');
+    body {
+        background: #999999;
+        font-family: 'Prompt', sans-serif;
+    }
+    table {
+        width: 60%;
+        float: none;
+        margin: 70px auto;
+        text-align: center;
+    }
+    td {
+        border: 1px solid #022355;
+        border-radius: 3px;
+        background: #ffffff;
+        font-weight: bold;
+        box-shadow: 0 10px 7px -6px #777;
+        transition: box-shadow 0.3s, background 0.3s;
+    }
+    td:hover {
+        box-shadow: none;
+        background: #c9c9c9;
+    }
+    th {
+        background: #3d122e;
+        color: #ffffff;
+        border-radius: 3px;
+    }
+    fieldset {
+        margin: 80px;
+        border-radius: 7px;
+        border: 2px solid #3d122e;
+        background: #d9d9d9;
+        box-shadow: 0 10px 15px 15px #777;
+        transition: box-shadow 0.3s;
+    }
+    fieldset:hover {
+        box-shadow: none;
+    }
+    legend {
+        background: #c9c9c9;
+        color: #3d122e;
+        font-size: 20px;
+        padding: 7px 20px;
+        border: 2px solid #3d122e;
+        border-radius: 5px;
+        box-shadow: 0 10px 7px -6px #777;
+    }
+</style>

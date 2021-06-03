@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Model\ScraperModel;
-use DOMDocument;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,13 +31,18 @@ class ScrapController extends AbstractController
     {
         $string = $request->get('string');
         $url = 'https://www.google.com/search?q=';
-        $string = str_replace(' ', '+', $string);
-        $html = file_get_contents($url.$string);
+        $searchString = str_replace(' ', '+', $string);
+        $html = file_get_contents($url.$searchString);
         $scrapper = new ScraperModel();
         $urlsFinal = $scrapper->webCounter($html);
         $scrapper->guardaRegistros($urlsFinal, $session);
-        dump($urlsFinal);
 
-        return $this->render('scrap/result.html.twig', ['lista' => $urlsFinal]);
+        return $this->render(
+            'scrap/result.html.twig',
+            [
+                'lista' => $urlsFinal,
+                'string' => $string,
+            ]
+        );
     }
 }

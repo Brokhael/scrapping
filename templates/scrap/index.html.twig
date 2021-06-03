@@ -4,16 +4,23 @@
 
 {% block body %}
     <div class="row no-margin">
-        <div class="col-md-2">
+        <div class="col-md-6 center-div">
             <form class="margin-50" id="form_google" action="{{ path('scrap_buscar') }}" method="post">
-                <label for="string">Introducir busqueda</label>
+                <label class="bold-text" for="string">Introducir texto</label>
                 <input class="form-control" type="text" id="string" name="string">
             </form>
         </div>
     </div>
-    <hr>
     <div id="contenido"></div>
     <style>
+        .center-div {
+            float: none;
+            margin: 100px auto;
+        }
+        .bold-text {
+            font-weight: bold;
+            font-size: 20px;
+        }
         .no-margin {
             margin: 0;
         }
